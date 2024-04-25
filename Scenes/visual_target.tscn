@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://do3g0vkl5kao6"]
+
+[ext_resource type="Script" path="res://Scenes/VisibleTarget.cs" id="1_rf234"]
+[ext_resource type="Texture2D" uid="uid://cfxxw3ji8mq5n" path="res://Art/basic_shapes/ring_white.png" id="1_yck45"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8wry5"]
+radius = 46.0109
+
+[node name="VisualTarget" type="Area2D"]
+script = ExtResource("1_rf234")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8wry5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yck45")
