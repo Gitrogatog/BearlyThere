@@ -50,5 +50,6 @@ move_right={
 2d_physics/layer_1="wall"
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemy"
-2d_physics/layer_4="pickup"
+2d_physics/layer_4="enemysight"
 2d_physics/layer_5="door"
+2d_physics/layer_6="pickup"

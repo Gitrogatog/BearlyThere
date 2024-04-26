@@ -7,6 +7,7 @@
 radius = 46.0109
 
 [node name="VisualTarget" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_rf234")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
