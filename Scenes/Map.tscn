@@ -23,3 +23,5 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 script = ExtResource("2_vvnka")
+
+[connection signal="pressed" from="Sprite2D/TextureButton" to="Sprite2D/TextureButton" method="_on_pressed"]
