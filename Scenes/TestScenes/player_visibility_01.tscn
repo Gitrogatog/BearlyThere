@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgjjtcmwu2sxj"]
+
+[ext_resource type="PackedScene" uid="uid://du4ogmtvgwqwo" path="res://Scenes/base_guard.tscn" id="1_pso3n"]
+[ext_resource type="PackedScene" uid="uid://bpfp6l0ni3woe" path="res://Scenes/player_character.tscn" id="2_c43pt"]
+[ext_resource type="PackedScene" uid="uid://djejalwruyso6" path="res://Scenes/guard_rotate.tscn" id="3_fh3kn"]
+[ext_resource type="Script" path="res://Scripts/StealthMeter.cs" id="4_uly06"]
+
+[node name="player_visibility_01" type="Node2D"]
+
+[node name="BaseGuard" parent="." instance=ExtResource("1_pso3n")]
+position = Vector2(128, 209)
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_c43pt")]
+position = Vector2(441, 119)
+
+[node name="RotateGuard" parent="." instance=ExtResource("3_fh3kn")]
+position = Vector2(571, 309)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 400.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Detection Meter UI" type="Control" parent="Control" node_paths=PackedStringArray("detectionMeterUI")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_uly06")
+detectionMeterUI = NodePath("ColorRect2")
+
+[node name="ColorRect" type="ColorRect" parent="Control/Detection Meter UI"]
+layout_mode = 2
+offset_right = 400.0
+offset_bottom = 40.0
+
+[node name="ColorRect2" type="ColorRect" parent="Control/Detection Meter UI"]
+modulate = Color(0.592157, 0, 0.305882, 1)
+layout_mode = 2
+offset_right = 400.0
+offset_bottom = 40.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://chnjvpy5kgps8"]
 
-[ext_resource type="Script" path="res://TestMovement.cs" id="1_1wweh"]
+[ext_resource type="Script" path="res://Scripts/TestMovement.cs" id="1_bqjlo"]
 [ext_resource type="PackedScene" uid="uid://b2qispfamb5ok" path="res://Scenes/sight_cone.tscn" id="2_0df2b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b30s2"]
@@ -9,11 +9,10 @@
 position = Vector2(100, 100)
 collision_layer = 2
 collision_mask = 3
-script = ExtResource("1_1wweh")
+script = ExtResource("1_bqjlo")
 moveSpeed = 100.0
 
 [node name="SightCone" parent="." instance=ExtResource("2_0df2b")]
-position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_b30s2")

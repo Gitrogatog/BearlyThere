@@ -12,7 +12,7 @@ public partial class FieldOfView : Node2D
     [Export] MeshInstance2D meshInstanceNode;
 
     float viewDiff;
-    List<Node2D> visibleTargets = new List<Node2D>();
+    public List<Node2D> visibleTargets = new List<Node2D>();
     List<Vector3> viewPoints = new List<Vector3>();
 
     public override void _EnterTree()
@@ -128,7 +128,7 @@ public partial class FieldOfView : Node2D
     void DrawFOVMesh()
     {
         int vertexCount = viewPoints.Count + 1;
-        GD.Print(vertexCount);
+        // GD.Print(vertexCount);
         Vector3[] vertices = new Vector3[vertexCount];
         int[] triangles = new int[(vertexCount - 2) * 3];
 

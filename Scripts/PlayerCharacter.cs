@@ -11,5 +11,6 @@ public partial class PlayerCharacter : CharacterBody2D
         Vector2 movement = new Vector2(horizontalMove, verticalMove).Normalized();
         Velocity = moveSpeed * movement;
         MoveAndSlide();
+
     }
 }
