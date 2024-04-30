@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://5ix5qd8be2i4"]
+
+[ext_resource type="Texture2D" uid="uid://dkrncl2nh4sec" path="res://Art/image.png" id="1_oothk"]
+[ext_resource type="Script" path="res://Scenes/minimap.gd" id="2_33blj"]
+
+[node name="TextureButton" type="TextureButton"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -287.0
+offset_top = 19.0
+offset_right = 50.0
+offset_bottom = 235.0
+grow_horizontal = 0
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("1_oothk")
+script = ExtResource("2_33blj")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
