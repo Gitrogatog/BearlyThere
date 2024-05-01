@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cpog4uyrffg6"]
 
-[ext_resource type="Script" path="res://TestModifyMesh.cs" id="1_1r0q1"]
+[ext_resource type="Script" path="res://Scripts/TestModifyMesh.cs" id="1_1r0q1"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ogf8x"]
 

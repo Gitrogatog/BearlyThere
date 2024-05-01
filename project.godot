@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Bearly There"
 run/main_scene="res://Scenes/world.tscn"
+run/main_scene="res://Scenes/minimap.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 

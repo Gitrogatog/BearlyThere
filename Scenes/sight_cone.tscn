@@ -1,8 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2qispfamb5ok"]
+[gd_scene load_steps=5 format=3 uid="uid://b2qispfamb5ok"]
 
 [ext_resource type="Script" path="res://Scripts/FieldOfView.cs" id="1_7nvph"]
-[ext_resource type="Texture2D" uid="uid://gannpho4qfyx" path="res://Art/basic_shapes/square_white.png" id="2_kjw12"]
-[ext_resource type="PackedScene" uid="uid://bpfp6l0ni3woe" path="res://Scenes/player_character.tscn" id="3_4q3fi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oc81c"]
 radius = 141.128
@@ -12,17 +10,13 @@ radius = 141.128
 [sub_resource type="ArrayMesh" id="ArrayMesh_3p3vu"]
 
 [node name="SightCone" type="Node2D" node_paths=PackedStringArray("targetArea", "meshInstanceNode")]
-position = Vector2(185, 106)
 script = ExtResource("1_7nvph")
 viewRadius = 200.0
 viewAngle = 60.0
 targetArea = NodePath("")
 obstacleMask = 1
 meshResolution = 0.1
-meshInstanceNode = NodePath("")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_kjw12")
+meshInstanceNode = NodePath("MeshInstance2D")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8
