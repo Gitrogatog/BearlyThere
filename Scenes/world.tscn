@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bhf5vjreyi63t" path="res://Art/taiga_ [version 1.0]/taiga_ [version 1.0]/taigaPath_.png" id="4_s1luu"]
 [ext_resource type="Texture2D" uid="uid://cxl4j2c0d6j8f" path="res://Art/taiga_ [version 1.0]/taiga_ [version 1.0]/taiga_ [resources].png" id="5_rj8p8"]
 [ext_resource type="Texture2D" uid="uid://qew6a1mpboeb" path="res://Art/survivalgame-trees.png" id="6_yqv2q"]
-[ext_resource type="Script" path="res://PlayerCharacter.cs" id="7_56ki2"]
+[ext_resource type="Script" path="res://Scripts/PlayerCharacter.cs" id="7_56ki2"]
 [ext_resource type="Texture2D" uid="uid://bebc88agbv7qe" path="res://Art/vecteezy_bear-animal-flat-vector-design-isolated_11107891.png" id="8_sjmd1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h50t8"]
