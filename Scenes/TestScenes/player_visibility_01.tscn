@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgjjtcmwu2sxj"]
+[gd_scene load_steps=6 format=3 uid="uid://dgjjtcmwu2sxj"]
 
 [ext_resource type="PackedScene" uid="uid://du4ogmtvgwqwo" path="res://Scenes/base_guard.tscn" id="1_pso3n"]
 [ext_resource type="PackedScene" uid="uid://bpfp6l0ni3woe" path="res://Scenes/player_character.tscn" id="2_c43pt"]
 [ext_resource type="PackedScene" uid="uid://djejalwruyso6" path="res://Scenes/guard_rotate.tscn" id="3_fh3kn"]
 [ext_resource type="Script" path="res://Scripts/StealthMeter.cs" id="4_uly06"]
+[ext_resource type="PackedScene" uid="uid://gt5l51l1jgg8" path="res://Scenes/Cameras/follow_player_cam.tscn" id="5_77gi1"]
 
 [node name="player_visibility_01" type="Node2D"]
 
@@ -43,3 +44,5 @@ modulate = Color(0.592157, 0, 0.305882, 1)
 layout_mode = 2
 offset_right = 400.0
 offset_bottom = 40.0
+
+[node name="FollowPlayerCam" parent="." instance=ExtResource("5_77gi1")]

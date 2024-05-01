@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bpfp6l0ni3woe"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter.cs" id="1_0f3r2"]
-[ext_resource type="Texture2D" uid="uid://gannpho4qfyx" path="res://Art/basic_shapes/square_white.png" id="2_40soi"]
+[ext_resource type="Texture2D" uid="uid://bebc88agbv7qe" path="res://Art/vecteezy_bear-animal-flat-vector-design-isolated_11107891.png" id="2_ny1fb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lmyx5"]
 radius = 35.2278
@@ -16,7 +16,8 @@ moveSpeed = 100.0
 metadata/IsPlayer = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Player"]]
-texture = ExtResource("2_40soi")
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_ny1fb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
 shape = SubResource("CircleShape2D_lmyx5")
