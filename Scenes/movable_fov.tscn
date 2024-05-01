@@ -12,8 +12,10 @@ collision_mask = 3
 script = ExtResource("1_1wweh")
 moveSpeed = 100.0
 
-[node name="SightCone" parent="." instance=ExtResource("2_0df2b")]
+[node name="SightCone" parent="." node_paths=PackedStringArray("targetArea", "meshInstanceNode") instance=ExtResource("2_0df2b")]
 position = Vector2(0, 0)
+targetArea = NodePath("")
+meshInstanceNode = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_b30s2")
