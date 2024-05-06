@@ -11,9 +11,9 @@ public partial class FieldOfView : Node2D
 	[Export] float meshResolution;
 	[Export] MeshInstance2D meshInstanceNode;
 
-    float viewDiff;
-    public List<Node2D> visibleTargets = new List<Node2D>();
-    List<Vector3> viewPoints = new List<Vector3>();
+	float viewDiff;
+	public List<Node2D> visibleTargets = new List<Node2D>();
+	List<Vector3> viewPoints = new List<Vector3>();
 
 	public override void _EnterTree()
 	{
@@ -24,6 +24,8 @@ public partial class FieldOfView : Node2D
 			Radius = viewRadius
 		};
 		shape.Shape = circleShape2D;
+		var mesh = new ArrayMesh();
+		meshInstanceNode.Mesh = mesh;
 	}
 	public override void _Process(double delta)
 	{
@@ -124,13 +126,13 @@ public partial class FieldOfView : Node2D
 		}
 		return new ViewCastInfo(false, endPos, viewRadius, globalAngle, aimVector);
 
-    }
-    void DrawFOVMesh()
-    {
-        int vertexCount = viewPoints.Count + 1;
-        // GD.Print(vertexCount);
-        Vector3[] vertices = new Vector3[vertexCount];
-        int[] triangles = new int[(vertexCount - 2) * 3];
+	}
+	void DrawFOVMesh()
+	{
+		int vertexCount = viewPoints.Count + 1;
+		// GD.Print(vertexCount);
+		Vector3[] vertices = new Vector3[vertexCount];
+		int[] triangles = new int[(vertexCount - 2) * 3];
 
 		// vertices[0] = new Vector3(GlobalPosition.X, GlobalPosition.Y, 0);
 		vertices[0] = Vector3.Zero;

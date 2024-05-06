@@ -1,48 +1,63 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgjjtcmwu2sxj"]
+[gd_scene load_steps=9 format=3 uid="uid://dgjjtcmwu2sxj"]
 
+[ext_resource type="PackedScene" uid="uid://c75jprnry40s" path="res://Scenes/TestScenes/wall_obstacle.tscn" id="1_a5xdl"]
 [ext_resource type="PackedScene" uid="uid://du4ogmtvgwqwo" path="res://Scenes/base_guard.tscn" id="1_pso3n"]
 [ext_resource type="PackedScene" uid="uid://bpfp6l0ni3woe" path="res://Scenes/player_character.tscn" id="2_c43pt"]
 [ext_resource type="PackedScene" uid="uid://djejalwruyso6" path="res://Scenes/guard_rotate.tscn" id="3_fh3kn"]
 [ext_resource type="Script" path="res://Scripts/StealthMeter.cs" id="4_uly06"]
 [ext_resource type="PackedScene" uid="uid://gt5l51l1jgg8" path="res://Scenes/Cameras/follow_player_cam.tscn" id="5_77gi1"]
+[ext_resource type="Texture2D" uid="uid://blyabo630xkxx" path="res://Art/basic_shapes/circle_white.png" id="5_x7xyy"]
 
-[node name="player_visibility_01" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_g1ci4"]
+radius = 83.0
 
-[node name="BaseGuard" parent="." instance=ExtResource("1_pso3n")]
-position = Vector2(128, 209)
+[node name="player_visibility_01" type="Node"]
 
-[node name="PlayerCharacter" parent="." instance=ExtResource("2_c43pt")]
+[node name="GameWorld" type="Node2D" parent="."]
+
+[node name="WallObstacle" parent="GameWorld" instance=ExtResource("1_a5xdl")]
+position = Vector2(671, 259)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="GameWorld"]
+modulate = Color(1, 0.290196, 0.129412, 1)
+position = Vector2(299, 247)
+
+[node name="Sprite2D" type="Sprite2D" parent="GameWorld/StaticBody2D"]
+scale = Vector2(2.295, 2.295)
+texture = ExtResource("5_x7xyy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/StaticBody2D"]
+shape = SubResource("CircleShape2D_g1ci4")
+
+[node name="BaseGuard" parent="GameWorld" instance=ExtResource("1_pso3n")]
+position = Vector2(-33, 207)
+
+[node name="PlayerCharacter" parent="GameWorld" instance=ExtResource("2_c43pt")]
 position = Vector2(441, 119)
 
-[node name="RotateGuard" parent="." instance=ExtResource("3_fh3kn")]
+[node name="RotateGuard" parent="GameWorld" instance=ExtResource("3_fh3kn")]
 position = Vector2(571, 309)
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 400.0
-offset_bottom = 40.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="FollowPlayerCam" parent="GameWorld" node_paths=PackedStringArray("playerNode") instance=ExtResource("5_77gi1")]
+playerNode = NodePath("../PlayerCharacter")
 
-[node name="Detection Meter UI" type="Control" parent="Control" node_paths=PackedStringArray("detectionMeterUI")]
+[node name="Main UI" type="CanvasLayer" parent="."]
+
+[node name="Detection Meter UI" type="Control" parent="Main UI" node_paths=PackedStringArray("detectionMeterUI")]
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_uly06")
 detectionMeterUI = NodePath("ColorRect2")
 
-[node name="ColorRect" type="ColorRect" parent="Control/Detection Meter UI"]
+[node name="ColorRect" type="ColorRect" parent="Main UI/Detection Meter UI"]
 layout_mode = 2
 offset_right = 400.0
 offset_bottom = 40.0
 
-[node name="ColorRect2" type="ColorRect" parent="Control/Detection Meter UI"]
+[node name="ColorRect2" type="ColorRect" parent="Main UI/Detection Meter UI"]
 modulate = Color(0.592157, 0, 0.305882, 1)
 layout_mode = 2
 offset_right = 400.0
 offset_bottom = 40.0
-
-[node name="FollowPlayerCam" parent="." instance=ExtResource("5_77gi1")]

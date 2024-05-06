@@ -8,6 +8,7 @@
 script = ExtResource("1_oma30")
 
 [node name="SightCone" parent="." instance=ExtResource("2_aoejx")]
+viewRadius = 300.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_k5218")

@@ -1,11 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://b2qispfamb5ok"]
 
 [ext_resource type="Script" path="res://Scripts/FieldOfView.cs" id="1_7nvph"]
+[ext_resource type="Material" uid="uid://cbvkg1p6a68e7" path="res://Shaders/viewcone_mat.tres" id="2_31wpo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oc81c"]
 radius = 141.128
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nuivf"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3p3vu"]
 
@@ -26,5 +25,6 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_oc81c")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-material = SubResource("CanvasItemMaterial_nuivf")
+modulate = Color(0.639216, 0.639216, 0.639216, 1)
+material = ExtResource("2_31wpo")
 mesh = SubResource("ArrayMesh_3p3vu")

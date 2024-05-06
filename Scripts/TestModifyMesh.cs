@@ -7,7 +7,7 @@ public partial class TestModifyMesh : Node2D
 	[Export] MeshInstance2D meshInstanceNode;
 	public override void _Ready()
 	{
-		// var mesh = new ArrayMesh();
+
 		var surfaceArray = new Godot.Collections.Array();
 		surfaceArray.Resize((int)Mesh.ArrayType.Max);
 		var verts = new Vector3[] {
