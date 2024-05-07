@@ -6,16 +6,16 @@ public partial class GuardRotate : Node2D
     [Export] float minAngle;
     [Export] float maxAngle;
     [Export] float turnSpeed;
-    Node2D turnNode;
+    Node2D rotateNode;
     bool turningToMax;
     public override void _Ready()
     {
-        turnNode = this;
+        rotateNode = GetNode<Node2D>("GuardSightAI");
     }
 
     public override void _Process(double delta)
     {
-        float currentRotation = turnNode.RotationDegrees;
+        float currentRotation = rotateNode.RotationDegrees;
         if (turningToMax)
         {
             currentRotation += turnSpeed * (float)delta;
@@ -34,6 +34,6 @@ public partial class GuardRotate : Node2D
                 turningToMax = true;
             }
         }
-        turnNode.RotationDegrees = currentRotation;
+        rotateNode.RotationDegrees = currentRotation;
     }
 }

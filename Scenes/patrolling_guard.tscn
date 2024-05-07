@@ -11,7 +11,7 @@ moveSpeed = 80.0
 turnSpeed = 30.0
 waypointDistCheck = 10.0
 
-[node name="BaseGuard" parent="." instance=ExtResource("1_rt0fp")]
+[node name="GuardSightAI" parent="." instance=ExtResource("1_rt0fp")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_pbs3o")
