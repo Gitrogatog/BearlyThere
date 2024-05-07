@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://fi21xntiiu7h"]
+
+[ext_resource type="Script" path="res://Scripts/GuardRotate.cs" id="1_hwnqh"]
+[ext_resource type="PackedScene" uid="uid://du4ogmtvgwqwo" path="res://Scenes/guard_sight_ai.tscn" id="2_5d8px"]
+[ext_resource type="Texture2D" uid="uid://gannpho4qfyx" path="res://Art/basic_shapes/square_white.png" id="3_leysx"]
+
+[node name="RotatingGuard" type="Node2D"]
+script = ExtResource("1_hwnqh")
+minAngle = -60.0
+maxAngle = 30.0
+turnSpeed = 20.0
+
+[node name="GuardSightAI" parent="." instance=ExtResource("2_5d8px")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_leysx")

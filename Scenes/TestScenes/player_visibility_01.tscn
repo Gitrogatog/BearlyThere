@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://dgjjtcmwu2sxj"]
+[gd_scene load_steps=12 format=3 uid="uid://dgjjtcmwu2sxj"]
 
 [ext_resource type="PackedScene" uid="uid://c75jprnry40s" path="res://Scenes/TestScenes/wall_obstacle.tscn" id="1_a5xdl"]
 [ext_resource type="Script" path="res://Scripts/StealthGameLoop.cs" id="1_pfndh"]
-[ext_resource type="PackedScene" uid="uid://du4ogmtvgwqwo" path="res://Scenes/base_guard.tscn" id="1_pso3n"]
+[ext_resource type="PackedScene" uid="uid://du4ogmtvgwqwo" path="res://Scenes/guard_sight_ai.tscn" id="1_pso3n"]
 [ext_resource type="PackedScene" uid="uid://bpfp6l0ni3woe" path="res://Scenes/player_character.tscn" id="2_c43pt"]
-[ext_resource type="PackedScene" uid="uid://djejalwruyso6" path="res://Scenes/guard_rotate.tscn" id="3_fh3kn"]
 [ext_resource type="Script" path="res://Scripts/StealthMeter.cs" id="4_uly06"]
+[ext_resource type="PackedScene" uid="uid://fi21xntiiu7h" path="res://Scenes/rotating_guard.tscn" id="5_6yynd"]
 [ext_resource type="PackedScene" uid="uid://gt5l51l1jgg8" path="res://Scenes/Cameras/follow_player_cam.tscn" id="5_77gi1"]
 [ext_resource type="Texture2D" uid="uid://blyabo630xkxx" path="res://Art/basic_shapes/circle_white.png" id="5_x7xyy"]
+[ext_resource type="PackedScene" uid="uid://tnr13st8gpru" path="res://Scenes/patrolling_guard.tscn" id="8_g66od"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1ci4"]
 radius = 83.0
@@ -40,17 +41,35 @@ shape = SubResource("CircleShape2D_g1ci4")
 [node name="BaseGuard" parent="GameWorld" instance=ExtResource("1_pso3n")]
 position = Vector2(-33, 207)
 
+[node name="RotatingGuard" parent="GameWorld" instance=ExtResource("5_6yynd")]
+position = Vector2(534, 254)
+
 [node name="PlayerCharacter" parent="GameWorld" instance=ExtResource("2_c43pt")]
 position = Vector2(441, 119)
-
-[node name="RotateGuard" parent="GameWorld" instance=ExtResource("3_fh3kn")]
-position = Vector2(571, 309)
 
 [node name="FollowPlayerCam" parent="GameWorld" node_paths=PackedStringArray("playerNode") instance=ExtResource("5_77gi1")]
 playerNode = NodePath("../PlayerCharacter")
 
+[node name="PatrollingGuard" parent="GameWorld" node_paths=PackedStringArray("waypoints") instance=ExtResource("8_g66od")]
+position = Vector2(-313, -88)
+waypoints = [NodePath("../Waypoints/waypoint0"), NodePath("../Waypoints/waypoint1"), NodePath("../Waypoints/waypoint2"), NodePath("../Waypoints/waypoint3")]
+
 [node name="StartPos" type="Node2D" parent="GameWorld"]
 position = Vector2(195, 20)
+
+[node name="Waypoints" type="Node2D" parent="GameWorld"]
+
+[node name="waypoint0" type="Node2D" parent="GameWorld/Waypoints"]
+position = Vector2(-214, -232)
+
+[node name="waypoint1" type="Node2D" parent="GameWorld/Waypoints"]
+position = Vector2(321, -234)
+
+[node name="waypoint2" type="Node2D" parent="GameWorld/Waypoints"]
+position = Vector2(235, 83)
+
+[node name="waypoint3" type="Node2D" parent="GameWorld/Waypoints"]
+position = Vector2(-228, 117)
 
 [node name="Main UI" type="CanvasLayer" parent="."]
 

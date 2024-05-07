@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://du4ogmtvgwqwo"]
+
+[ext_resource type="Script" path="res://Scripts/GuardSightAI.cs" id="1_hry4o"]
+[ext_resource type="PackedScene" uid="uid://b2qispfamb5ok" path="res://Scenes/sight_cone.tscn" id="2_dlyss"]
+
+[node name="GuardSightAI" type="Node2D"]
+script = ExtResource("1_hry4o")
+
+[node name="SightCone" parent="." instance=ExtResource("2_dlyss")]
+viewRadius = 300.0

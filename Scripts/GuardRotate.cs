@@ -6,11 +6,11 @@ public partial class GuardRotate : Node2D
     [Export] float minAngle;
     [Export] float maxAngle;
     [Export] float turnSpeed;
-    [Export] Node2D turnNode;
+    Node2D turnNode;
     bool turningToMax;
     public override void _Ready()
     {
-
+        turnNode = this;
     }
 
     public override void _Process(double delta)
