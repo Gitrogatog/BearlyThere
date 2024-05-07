@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgjjtcmwu2sxj"]
+[gd_scene load_steps=11 format=3 uid="uid://dgjjtcmwu2sxj"]
 
 [ext_resource type="PackedScene" uid="uid://c75jprnry40s" path="res://Scenes/TestScenes/wall_obstacle.tscn" id="1_a5xdl"]
+[ext_resource type="Script" path="res://Scripts/StealthGameLoop.cs" id="1_pfndh"]
 [ext_resource type="PackedScene" uid="uid://du4ogmtvgwqwo" path="res://Scenes/base_guard.tscn" id="1_pso3n"]
 [ext_resource type="PackedScene" uid="uid://bpfp6l0ni3woe" path="res://Scenes/player_character.tscn" id="2_c43pt"]
 [ext_resource type="PackedScene" uid="uid://djejalwruyso6" path="res://Scenes/guard_rotate.tscn" id="3_fh3kn"]
@@ -11,7 +12,14 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1ci4"]
 radius = 83.0
 
-[node name="player_visibility_01" type="Node"]
+[sub_resource type="LabelSettings" id="LabelSettings_axmqs"]
+font_size = 50
+
+[node name="StealthGameLoop" type="Node" node_paths=PackedStringArray("playerCharacter", "deathUI", "playerStartPos")]
+script = ExtResource("1_pfndh")
+playerCharacter = NodePath("GameWorld/PlayerCharacter")
+deathUI = NodePath("Main UI/Death UI")
+playerStartPos = NodePath("GameWorld/StartPos")
 
 [node name="GameWorld" type="Node2D" parent="."]
 
@@ -41,6 +49,9 @@ position = Vector2(571, 309)
 [node name="FollowPlayerCam" parent="GameWorld" node_paths=PackedStringArray("playerNode") instance=ExtResource("5_77gi1")]
 playerNode = NodePath("../PlayerCharacter")
 
+[node name="StartPos" type="Node2D" parent="GameWorld"]
+position = Vector2(195, 20)
+
 [node name="Main UI" type="CanvasLayer" parent="."]
 
 [node name="Detection Meter UI" type="Control" parent="Main UI" node_paths=PackedStringArray("detectionMeterUI")]
@@ -61,3 +72,52 @@ modulate = Color(0.592157, 0, 0.305882, 1)
 layout_mode = 2
 offset_right = 400.0
 offset_bottom = 40.0
+
+[node name="Death UI" type="Control" parent="Main UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="Main UI/Death UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.666667, 0.223529, 1, 0.686275)
+
+[node name="RichTextLabel" type="Label" parent="Main UI/Death UI"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.1
+anchor_right = 0.6
+anchor_bottom = 0.3
+offset_top = 0.199997
+offset_right = 9.79999
+offset_bottom = -0.400009
+grow_horizontal = 2
+text = "You Were Caught!
+"
+label_settings = SubResource("LabelSettings_axmqs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResetButton" type="Button" parent="Main UI/Death UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.5
+anchor_right = 0.6
+anchor_bottom = 0.6
+offset_bottom = -0.00802612
+grow_horizontal = 2
+grow_vertical = 2
+text = "Retry Level"
+
+[connection signal="pressed" from="Main UI/Death UI/ResetButton" to="." method="ResetLevel"]
