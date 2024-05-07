@@ -8,10 +8,11 @@
 script = ExtResource("2_o42yy")
 waypoints = []
 moveSpeed = 80.0
-turnSpeed = 30.0
+turnSpeed = 60.0
 waypointDistCheck = 10.0
 
 [node name="GuardSightAI" parent="." instance=ExtResource("1_rt0fp")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_pbs3o")

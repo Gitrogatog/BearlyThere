@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://k5lkqeqrm63w"]
+
+[ext_resource type="Script" path="res://Scripts/StealthMeter.cs" id="1_rdigc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_axmqs"]
+font_size = 50
+
+[node name="Main UI" type="CanvasLayer"]
+
+[node name="Detection Meter UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_rdigc")
+
+[node name="Background" type="ColorRect" parent="Detection Meter UI"]
+layout_mode = 2
+offset_right = 400.0
+offset_bottom = 40.0
+
+[node name="Detection" type="ColorRect" parent="Detection Meter UI"]
+modulate = Color(0.592157, 0, 0.305882, 1)
+layout_mode = 2
+offset_right = 400.0
+offset_bottom = 40.0
+
+[node name="Death UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="Death UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.666667, 0.223529, 1, 0.686275)
+
+[node name="RichTextLabel" type="Label" parent="Death UI"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.1
+anchor_right = 0.6
+anchor_bottom = 0.3
+offset_top = 0.199997
+offset_right = 9.79999
+offset_bottom = -0.400009
+grow_horizontal = 2
+text = "You Were Caught!
+"
+label_settings = SubResource("LabelSettings_axmqs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResetButton" type="Button" parent="Death UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.5
+anchor_right = 0.6
+anchor_bottom = 0.6
+offset_bottom = -0.00802612
+grow_horizontal = 2
+grow_vertical = 2
+text = "Retry Level"
