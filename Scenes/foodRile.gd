@@ -16,5 +16,9 @@ func _process(delta):
 
 
 func on_collision(body: Node2D):
-	if body.has_meta("player"):
-		state == "ate"
+	print("collided")
+	if body.has_meta("IsPlayer"):
+		print("player")
+		state = "ate"
+	else:
+		print("notplayer")
