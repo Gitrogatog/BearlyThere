@@ -19,6 +19,6 @@ func on_collision(body: Node2D):
 	print("collided")
 	if body.has_meta("IsPlayer"):
 		print("player")
-		state == "ate"
+		state = "ate"
 	else:
 		print("notplayer")
