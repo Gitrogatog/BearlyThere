@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://5fsuq07yac05"]
+[gd_scene load_steps=21 format=3 uid="uid://5fsuq07yac05"]
 
 [ext_resource type="Texture2D" uid="uid://btuxj0nky5eq6" path="res://Art/survivalgame-terrian-cliffs.png" id="1_6m56v"]
 [ext_resource type="Texture2D" uid="uid://pslxku3vlkwm" path="res://Art/survivalgame-terrian-defult.png" id="2_kfmhg"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter.cs" id="7_56ki2"]
 [ext_resource type="PackedScene" uid="uid://bpfp6l0ni3woe" path="res://Scenes/player_character.tscn" id="7_mfufj"]
 [ext_resource type="Texture2D" uid="uid://bebc88agbv7qe" path="res://Art/vecteezy_bear-animal-flat-vector-design-isolated_11107891.png" id="8_sjmd1"]
+[ext_resource type="PackedScene" uid="uid://sb2b6jcsbpid" path="res://Scenes/berry.tscn" id="11_eoa65"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h50t8"]
 texture = ExtResource("1_6m56v")
@@ -274,8 +275,9 @@ layer_1/tile_data = PackedInt32Array(262156, 0, 1, 196620, 0, 1, 131084, 0, 1, 6
 layer_2/name = "3"
 layer_2/tile_data = PackedInt32Array(393210, 65541, 1, 393211, 65541, 1, 327674, 65541, 1, 262138, 65541, 1, 327675, 65541, 1, 196602, 65541, 1, 131066, 65541, 1, 131067, 65541, 1, 196603, 65541, 1, 262139, 65541, 1, 65530, 65541, 1, 65531, 65541, 1, 393212, 131077, 1, 327676, 131077, 1, 262140, 131077, 1, 196604, 131077, 1, 131068, 131077, 1, 65532, 131077, 1, -4, 131077, 1, -65540, 131077, 1, -131076, 131077, 1, -196612, 131077, 1, -65541, 65541, 1, -131077, 65541, 1, -5, 65541, 1, -196613, 65541, 1, -6, 65541, 1, -65542, 65541, 1, -131078, 65541, 1, -131079, 65541, 1, -196614, 65541, 1, 458748, 131077, 2, 458747, 65541, 2, 458746, 5, 2, 262147, 524293, 1, 327685, 524293, 1, 327681, 524293, 1, -131071, 524293, 1, -196606, 524293, 1, 327690, 524293, 2, -262134, 524293, 2, 131085, 0, 1, 65544, 524293, 2, 196619, 524293, 2, -262138, 524293, 2, -262131, 0, 0, -196595, 0, 1, -131059, 0, 1, -65523, 0, 1, 13, 0, 1, 65549, 0, 1, 196621, 0, 1, 262157, 0, 1, 262158, 65536, 1, 327694, 65536, 1, 327693, 0, 2, 524288, 196613, 2, 589825, 196613, 0, 589826, 262149, 1, 589827, 262149, 1, 589828, 262149, 1, 524292, 262149, 1, 524291, 262149, 1, 524290, 262149, 1, 524289, 262149, 2, 458752, 196613, 1, 458753, 262149, 1, 458754, 262149, 1, 458755, 262149, 1, 458756, 262149, 1, 458757, 262149, 1, 458758, 262149, 1, 458759, 262149, 1, 458760, 262149, 1, 458761, 262149, 1, 458762, 327685, 1, 458763, 65536, 1, 524298, 327685, 1, 458764, 196613, 0, 458765, 262149, 0, 524301, 262149, 1, 524300, 262149, 1, 589836, 262149, 1, 589835, 262149, 1, 589834, 262149, 1, 589833, 262149, 1, 589832, 262149, 1, 589831, 262149, 1, 589830, 262149, 1, 589829, 262149, 1, 524293, 262149, 1, 524294, 262149, 1, 524295, 262149, 1, 524296, 262149, 1, 524297, 262149, 1, 524299, 327685, 0, 589837, 262149, 1, 393208, 5, 2, 393209, 65541, 1, 458745, 5, 2, 327672, 5, 1, 262137, 65541, 1, 327673, 65541, 1, 262136, 5, 1, 196600, 65541, 1, 131065, 65541, 1, 65529, 65541, 1, -7, 65541, 1, -65543, 65541, 1, 131064, 65541, 1, 196601, 65541, 1, 131063, 5, 1, 65527, 5, 1, -9, 5, 1, -8, 65541, 1, 65528, 65541, 1, -65544, 65541, 1, -131080, 5, 0, -65545, 5, 0, -196615, 5, 0, -262148, 131077, 0, -262149, 65541, 0, -262150, 5, 0, 393217, 196613, 0, 393218, 262149, 0, 393219, 262149, 0, 393220, 262149, 0, 393221, 262149, 0, 393222, 262149, 0, 393223, 262149, 0, 393224, 262149, 0, 393225, 262149, 0, 393226, 327685, 0, 393216, 196613, 0, 196599, 5, 2, 65542, 65538, 0, -262140, 65538, 0, 131082, 65538, 0)
 
-[node name="FollowPlayerCam" parent="." node_paths=PackedStringArray("playerNode") instance=ExtResource("7_0id2l")]
-playerNode = NodePath("../PlayerCharacter")
+[node name="FollowPlayerCam" parent="." instance=ExtResource("7_0id2l")]
+playerNode = Object(CharacterBody2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(171, 1),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"disable_mode":0,"collision_layer":2,"collision_mask":1,"collision_priority":1.0,"input_pickable":false,"motion_mode":0,"up_direction":Vector2(0, -1),"velocity":Vector2(0, 0),"slide_on_ceiling":true,"max_slides":4,"wall_min_slide_angle":0.261799,"floor_stop_on_slope":true,"floor_constant_speed":false,"floor_block_on_wall":true,"floor_max_angle":0.785398,"floor_snap_length":1.0,"platform_on_leave":0,"platform_floor_layers":4294967295,"platform_wall_layers":0,"safe_margin":0.08,"script":ExtResource("7_56ki2"),"moveSpeed":100.0,"metadata/IsPlayer":true)
+
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("7_mfufj")]
 position = Vector2(171, 1)
@@ -291,3 +293,5 @@ shape = SubResource("CapsuleShape2D_4alk8")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 scale = Vector2(0.01, 0.01)
 sprite_frames = SubResource("SpriteFrames_bby64")
+
+[node name="Berry" parent="." instance=ExtResource("11_eoa65")]

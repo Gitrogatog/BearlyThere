@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://sb2b6jcsbpid"]
+
+[ext_resource type="Script" path="res://Scenes/foodRile.gd" id="1_3x6wx"]
+[ext_resource type="Texture2D" uid="uid://difxvnixv31lo" path="res://Art/survivalgame-appletree.png" id="2_60x73"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stwtc"]
+atlas = ExtResource("2_60x73")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6d5q"]
+atlas = ExtResource("2_60x73")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aqaeb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stwtc")
+}],
+"loop": true,
+"name": &"ate",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6d5q")
+}],
+"loop": true,
+"name": &"uneaten",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_apiqr"]
+
+[node name="Berry" type="Node2D"]
+script = ExtResource("1_3x6wx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_aqaeb")
+animation = &"uneaten"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 35
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+light_mask = 7
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_apiqr")
+
+[connection signal="body_entered" from="Area2D" to="." method="on_collision"]
