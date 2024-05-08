@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://sb2b6jcsbpid"]
+[gd_scene load_steps=7 format=3 uid="uid://10odl8ixbb38"]
 
 [ext_resource type="Script" path="res://Scenes/foodRile.gd" id="1_3x6wx"]
 [ext_resource type="Texture2D" uid="uid://difxvnixv31lo" path="res://Art/survivalgame-appletree.png" id="2_60x73"]
@@ -37,7 +37,7 @@ script = ExtResource("1_3x6wx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_aqaeb")
-animation = &"uneaten"
+animation = &"ate"
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(3, 3)

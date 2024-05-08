@@ -13,7 +13,7 @@ public partial class GuardSightAI : Node2D
     {
         foreach (Node2D node in fov.visibleTargets)
         {
-            GD.Print("Saw something!");
+            // GD.Print("Saw something!");
             if (node.HasMeta("IsPlayer"))
             {
                 SeePlayerThisFrame((float)delta);
@@ -24,6 +24,6 @@ public partial class GuardSightAI : Node2D
     void SeePlayerThisFrame(float frameDelta)
     {
         Detection.UpdateDetectionMeter(frameDelta * detectionPerSecond);
-        GD.Print(Detection.detectionMeter);
+        // GD.Print(Detection.detectionMeter);
     }
 }
