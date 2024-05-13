@@ -30,5 +30,5 @@ func on_collision(body: Node2D):
 
 func on_collect():
 	if state == "ate":
-		
+		pass
 #food_bar.emit(food)

@@ -5,6 +5,10 @@ public partial class GuardSightAI : Node2D
 {
     FieldOfView fov;
     [Export] float detectionPerSecond = 1f;
+    [Export] float maxDetectionTime = 1f;
+    public float currentDetectionTime = 0f;
+    [Signal]
+    public delegate void MaxDetectionEventHandler();
     public override void _Ready()
     {
         fov = GetNode<FieldOfView>("SightCone");
@@ -24,6 +28,11 @@ public partial class GuardSightAI : Node2D
     void SeePlayerThisFrame(float frameDelta)
     {
         Detection.UpdateDetectionMeter(frameDelta * detectionPerSecond);
+        currentDetectionTime += frameDelta;
+        if (currentDetectionTime >= maxDetectionTime)
+        {
+            EmitSignal(SignalName.MaxDetection);
+        }
         // GD.Print(Detection.detectionMeter);
     }
 }

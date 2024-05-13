@@ -5,6 +5,7 @@
 
 [node name="GuardSightAI" type="Node2D"]
 script = ExtResource("1_hry4o")
+maxDetectionTime = 0.7
 
 [node name="SightCone" parent="." instance=ExtResource("2_dlyss")]
 viewRadius = 300.0

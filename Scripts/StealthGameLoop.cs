@@ -11,9 +11,11 @@ public partial class StealthGameLoop : Node
     [Export] Control detectBar;
     [Export] Control foodBar;
     [Export] Node2D playerStartPos;
+    GlobalEvents globalEvents;
 
     public override void _Ready()
     {
+        globalEvents = GetNode<GlobalEvents>("/root/GlobalEvents");
         StartLevel();
     }
     public override void _Process(double delta)
@@ -26,11 +28,15 @@ public partial class StealthGameLoop : Node
 
     void ResetLevel()
     {
+
+        // global.GotoScene("res://Scene2.tscn");
+        globalEvents.EmitSignal(GlobalEvents.SignalName.ResetLevel);
         StartLevel();
     }
 
     void StartLevel()
     {
+        globalEvents.EmitSignal(GlobalEvents.SignalName.StartLevel);
         Detection.detectionMeter = 0;
         deathUI.Visible = false;
         playerCharacter.IsDead = false;
