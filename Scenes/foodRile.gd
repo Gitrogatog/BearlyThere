@@ -7,8 +7,10 @@ signal food_bar
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	GlobalEvents.StartLevel.connect(on_reset)
 
+func on_reset():
+	state = "uneaten"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -30,5 +32,5 @@ func on_collision(body: Node2D):
 
 func on_collect():
 	if state == "ate":
-		pass
+		GlobalEvents.CollectFood.emit()
 #food_bar.emit(food)

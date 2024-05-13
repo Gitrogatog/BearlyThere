@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
 
 public partial class StealthGameLoop : Node
@@ -12,10 +13,13 @@ public partial class StealthGameLoop : Node
     [Export] Control foodBar;
     [Export] Node2D playerStartPos;
     GlobalEvents globalEvents;
-
+    public int currentFood;
+    [Export] public int requiredFood;
+    [Export] public int maxFood;
     public override void _Ready()
     {
         globalEvents = GetNode<GlobalEvents>("/root/GlobalEvents");
+        globalEvents.CollectFood += IncrementFood;
         StartLevel();
     }
     public override void _Process(double delta)
@@ -24,6 +28,11 @@ public partial class StealthGameLoop : Node
         {
             PlayerCaught();
         }
+    }
+
+    void IncrementFood()
+    {
+        currentFood++;
     }
 
     void ResetLevel()
@@ -41,6 +50,7 @@ public partial class StealthGameLoop : Node
         deathUI.Visible = false;
         playerCharacter.IsDead = false;
         playerCharacter.Position = playerStartPos.Position;
+        currentFood = 0;
         // CreateTween().TweenMethod(Callable.From<int, int>((x, y) => x = 1), 1, 2, 1f);
         //tween.TweenMethod(Callable.From<float>(x => Node.RotationDegrees = x), 360f, 1f, 1f);
     }
