@@ -1,19 +1,36 @@
 using Godot;
 using System;
 
-public partial class GuardRotate : Node2D
+public partial class GuardRotate : BaseGuardAI
 {
     [Export] float minAngle;
     [Export] float maxAngle;
+    [Export] float startAngle = 0;
     [Export] float turnSpeed;
     Node2D rotateNode;
     bool turningToMax;
     public override void _Ready()
     {
-        rotateNode = GetNode<Node2D>("GuardSightAI");
+        Init();
+        rotateNode = guardSightAI;
+        GlobalRotation = startAngle;
     }
 
     public override void _Process(double delta)
+    {
+        if (guardEnabled)
+        {
+            MoveGuard((float)delta);
+        }
+    }
+    public override void OnStartLevel()
+    {
+        base.OnStartLevel();
+        GlobalRotation = startAngle;
+        turningToMax = false;
+    }
+
+    public override void MoveGuard(float delta)
     {
         float currentRotation = rotateNode.RotationDegrees;
         if (turningToMax)

@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/minimap.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalEvents="*res://Scripts/GlobalEvents.cs"
+
 [dotnet]
 
 project/assembly_name="Bearly There"

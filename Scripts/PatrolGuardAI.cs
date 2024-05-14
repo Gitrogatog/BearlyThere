@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class PatrolGuardAI : Node2D
+public partial class PatrolGuardAI : BaseGuardAI
 {
     [Export] Node2D[] waypoints;
     [Export] float moveSpeed;
@@ -14,11 +14,41 @@ public partial class PatrolGuardAI : Node2D
 
     public override void _Ready()
     {
+        Init();
         sqrDistCheck = waypointDistCheck * waypointDistCheck;
         moveNode = this;
-        rotateNode = GetNode<Node2D>("GuardSightAI");
+        rotateNode = guardSightAI;
+    }
+    public override void OnStartLevel()
+    {
+        base.OnStartLevel();
+        targetWaypointIndex = 0;
+        GlobalPosition = waypoints[0].GlobalPosition;
+        GlobalRotation = 0;
     }
     public override void _Process(double delta)
+    {
+        if (guardEnabled)
+        {
+            MoveGuard((float)delta);
+        }
+    }
+
+    void EnableGuard()
+    {
+        guardEnabled = true;
+        guardSightAI.SetProcess(true);
+        guardSightAI.Visible = true;
+    }
+
+    void DisableGuard()
+    {
+        guardEnabled = false;
+        guardSightAI.SetProcess(false);
+        guardSightAI.Visible = false;
+    }
+
+    public override void MoveGuard(float delta)
     {
         Vector2 targetPos = waypoints[targetWaypointIndex].GlobalPosition;
         Vector2 vectorToTarget = targetPos - moveNode.GlobalPosition;
@@ -37,7 +67,5 @@ public partial class PatrolGuardAI : Node2D
                 targetWaypointIndex = 0;
             }
         }
-
-
     }
 }

@@ -334,7 +334,7 @@ sprite_frames = SubResource("SpriteFrames_bby64")
 [node name="Berry" parent="." instance=ExtResource("11_eoa65")]
 
 [node name="PlayerStartPos" type="Node2D" parent="."]
-position = Vector2(530, -250)
+position = Vector2(439, -36)
 
 [node name="Waypoints" type="Node2D" parent="."]
 
