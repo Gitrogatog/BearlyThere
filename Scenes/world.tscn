@@ -327,7 +327,7 @@ position = Vector2(-49, 76)
 waypoints = [NodePath("../Waypoints/waypoint0"), NodePath("../Waypoints/waypoint1"), NodePath("../Waypoints/waypoint2"), NodePath("../Waypoints/waypoint1")]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("7_mfufj")]
-position = Vector2(183, -18)
+position = Vector2(475, -22)
 
 [node name="Player" type="CharacterBody2D" parent="."]
 visible = false

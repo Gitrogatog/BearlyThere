@@ -12,7 +12,7 @@ func _set_food_count(new_food_count):
 	print("food count changed")
 	var prev_count = food_progress
 	var current_food_count = food_progress + new_food_count
-	food_progress = min(max_value, new_food_count)
+	food_progress = min(max_value, current_food_count)
 	value = food_progress
 
 
@@ -31,4 +31,4 @@ func _set_food_count(new_food_count):
 
 func init_food_state():
 	max_value = 100
-	value = food_progress
+	value = 0

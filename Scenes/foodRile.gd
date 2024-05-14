@@ -14,6 +14,8 @@ func _ready():
 	#	$ProgressBar.init_food_state(food_value)
 
 func on_reset():
+	var progress_bar = get_node("../Main UI/foodProgressBar")
+	progress_bar.init_food_state()
 	state = "uneaten"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
