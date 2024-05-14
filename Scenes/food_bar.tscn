@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ufeodb7h11kp"]
+
+[ext_resource type="Script" path="res://ProgressBar.gd" id="1_3npcf"]
+
+[node name="food_bar_node" type="Node2D"]
+position = Vector2(80, 52)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+offset_right = 4.0
+offset_bottom = 27.0
+script = ExtResource("1_3npcf")

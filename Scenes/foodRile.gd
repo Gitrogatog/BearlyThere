@@ -2,7 +2,6 @@ extends Node2D
 
 var state = "uneaten"
 var pickedUp = false
-signal food_collected
 signal food_bar
 
 # Called when the node enters the scene tree for the first time.
@@ -23,12 +22,11 @@ func on_collision(body: Node2D):
 	if body.has_meta("IsPlayer") and state != "ate":
 		print("player")
 		state = "ate"
-		food_collected.emit()
+		food_bar.emit()
 	else:
 		print("notplayer")
 
 
-func on_collect():
-	if state == "ate":
-		
+#func on_collect():
+	#if state == "ate":
 #food_bar.emit(food)

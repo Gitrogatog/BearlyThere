@@ -1,4 +1,4 @@
-extends Node2D
+extends ProgressBar
 
 var food_progress = 0
 

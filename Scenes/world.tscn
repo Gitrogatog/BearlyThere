@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://5fsuq07yac05"]
+[gd_scene load_steps=27 format=3 uid="uid://5fsuq07yac05"]
 
 [ext_resource type="Texture2D" uid="uid://btuxj0nky5eq6" path="res://Art/survivalgame-terrian-cliffs.png" id="1_6m56v"]
 [ext_resource type="Script" path="res://Scripts/StealthGameLoop.cs" id="1_jarna"]
@@ -352,12 +352,12 @@ position = Vector2(-48, 260)
 [node name="Death UI" parent="Main UI" index="1"]
 visible = false
 
-[connection signal="pressed" from="Main UI/Death UI/ResetButton" to="." method="ResetLevel"]
-
-[editable path="Main UI"]
-
 [node name="Berry2" parent="." instance=ExtResource("11_eoa65")]
 position = Vector2(305, 119)
 
 [node name="Berry3" parent="." instance=ExtResource("11_eoa65")]
 position = Vector2(175, -103)
+
+[connection signal="pressed" from="Main UI/Death UI/ResetButton" to="." method="ResetLevel"]
+
+[editable path="Main UI"]
