@@ -6,54 +6,54 @@ using System.Runtime.CompilerServices;
 
 public partial class StealthGameLoop : Node
 {
-    [Export] PlayerCharacter playerCharacter;
-    List<GuardSightAI> guards;
-    [Export] Control deathUI;
-    [Export] Control detectBar;
-    [Export] Control foodBar;
-    [Export] Node2D playerStartPos;
-    GlobalEvents globalEvents;
-    public int currentFood;
-    [Export] public int requiredFood;
-    [Export] public int maxFood;
-    public override void _Ready()
-    {
-        globalEvents = GetNode<GlobalEvents>("/root/GlobalEvents");
-        globalEvents.CollectFood += IncrementFood;
-        StartLevel();
-    }
-    public override void _Process(double delta)
-    {
-        if (Detection.detectionMeter >= 1)
-        {
-            PlayerCaught();
-        }
-    }
+	[Export] PlayerCharacter playerCharacter;
+	List<GuardSightAI> guards;
+	[Export] Control deathUI;
+	[Export] Control detectBar;
+	[Export] Control foodBar;
+	[Export] Node2D playerStartPos;
+	GlobalEvents globalEvents;
+	public int currentFood;
+	[Export] public int requiredFood;
+	[Export] public int maxFood;
+	public override void _Ready()
+	{
+		globalEvents = GetNode<GlobalEvents>("/root/GlobalEvents");
+		globalEvents.CollectFood += IncrementFood;
+		StartLevel();
+	}
+	public override void _Process(double delta)
+	{
+		if (Detection.detectionMeter >= 1)
+		{
+			PlayerCaught();
+		}
+	}
 
-    void IncrementFood()
-    {
-        currentFood++;
-    }
+	void IncrementFood()
+	{
+		currentFood++;
+	}
 
-    void ResetLevel()
-    {
+	void ResetLevel()
+	{
 
-        // global.GotoScene("res://Scene2.tscn");
-        globalEvents.EmitSignal(GlobalEvents.SignalName.ResetLevel);
-        StartLevel();
-    }
+		// global.GotoScene("res://Scene2.tscn");
+		globalEvents.EmitSignal(GlobalEvents.SignalName.ResetLevel);
+		StartLevel();
+	}
 
-    void StartLevel()
-    {
-        globalEvents.EmitSignal(GlobalEvents.SignalName.StartLevel);
-        Detection.detectionMeter = 0;
-        deathUI.Visible = false;
-        playerCharacter.IsDead = false;
-        playerCharacter.Position = playerStartPos.Position;
-        currentFood = 0;
-        // CreateTween().TweenMethod(Callable.From<int, int>((x, y) => x = 1), 1, 2, 1f);
-        //tween.TweenMethod(Callable.From<float>(x => Node.RotationDegrees = x), 360f, 1f, 1f);
-    }
+	void StartLevel()
+	{
+		globalEvents.EmitSignal(GlobalEvents.SignalName.StartLevel);
+		Detection.detectionMeter = 0;
+		deathUI.Visible = false;
+		playerCharacter.IsDead = false;
+		playerCharacter.Position = playerStartPos.Position;
+		currentFood = 0;
+		// CreateTween().TweenMethod(Callable.From<int, int>((x, y) => x = 1), 1, 2, 1f);
+		//tween.TweenMethod(Callable.From<float>(x => Node.RotationDegrees = x), 360f, 1f, 1f);
+	}
 
 	void PlayerCaught()
 	{
