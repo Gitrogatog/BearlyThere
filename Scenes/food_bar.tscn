@@ -1,13 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://ufeodb7h11kp"]
+[gd_scene load_steps=8 format=3 uid="uid://ufeodb7h11kp"]
 
-[ext_resource type="Script" path="res://ProgressBar.gd" id="1_3npcf"]
+[ext_resource type="Script" path="res://Scripts/ProgressBar.gd" id="1_3npcf"]
+[ext_resource type="PackedScene" uid="uid://bpfp6l0ni3woe" path="res://Scenes/player_character.tscn" id="2_xuc7v"]
+[ext_resource type="PackedScene" uid="uid://gt5l51l1jgg8" path="res://Scenes/Cameras/follow_player_cam.tscn" id="3_s34t5"]
+[ext_resource type="PackedScene" uid="uid://10odl8ixbb38" path="res://Scenes/berry.tscn" id="4_07ohg"]
+[ext_resource type="PackedScene" uid="uid://k5lkqeqrm63w" path="res://Scenes/main_ui.tscn" id="5_4l6jt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebyam"]
+bg_color = Color(0.137255, 0.0980392, 0.0588235, 1)
+shadow_color = Color(0.13803, 0.099325, 0.0589793, 1)
+shadow_size = 2
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_74dae"]
+bg_color = Color(0.0431373, 0.309804, 0.12549, 1)
 
 [node name="food_bar_node" type="Node2D"]
 position = Vector2(80, 52)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_xuc7v")]
+position = Vector2(-85, 53)
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
-offset_right = 4.0
-offset_bottom = 27.0
+[node name="FollowPlayerCam" parent="." instance=ExtResource("3_s34t5")]
+
+[node name="Berry" parent="." instance=ExtResource("4_07ohg")]
+position = Vector2(83, 40)
+
+[node name="Main UI" parent="." instance=ExtResource("5_4l6jt")]
+
+[node name="Death UI" parent="Main UI" index="1"]
+visible = false
+
+[node name="foodProgressBar" type="ProgressBar" parent="Main UI"]
+z_index = 1
+offset_right = 400.0
+offset_bottom = 30.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ebyam")
+theme_override_styles/fill = SubResource("StyleBoxFlat_74dae")
+show_percentage = false
 script = ExtResource("1_3npcf")
+
+[node name="PlayerStartPos" type="Node2D" parent="."]
+position = Vector2(530, -250)
+
+[editable path="Main UI"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://5fsuq07yac05"]
+[gd_scene load_steps=30 format=3 uid="uid://5fsuq07yac05"]
 
 [ext_resource type="Texture2D" uid="uid://btuxj0nky5eq6" path="res://Art/survivalgame-terrian-cliffs.png" id="1_6m56v"]
 [ext_resource type="Script" path="res://Scripts/StealthGameLoop.cs" id="1_jarna"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://tnr13st8gpru" path="res://Scenes/patrolling_guard.tscn" id="10_lihx7"]
 [ext_resource type="PackedScene" uid="uid://10odl8ixbb38" path="res://Scenes/berry.tscn" id="11_eoa65"]
 [ext_resource type="PackedScene" uid="uid://k5lkqeqrm63w" path="res://Scenes/main_ui.tscn" id="13_5qkkd"]
+[ext_resource type="Script" path="res://Scripts/ProgressBar.gd" id="17_m4ocb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h50t8"]
 texture = ExtResource("1_6m56v")
@@ -290,6 +291,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rkja1"]
+bg_color = Color(0.137255, 0.0980392, 0.0588235, 1)
+shadow_color = Color(0.13803, 0.099325, 0.0589793, 1)
+shadow_size = 2
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjvmc"]
+bg_color = Color(0.0431373, 0.309804, 0.12549, 1)
+
 [node name="World" type="Node2D" node_paths=PackedStringArray("playerCharacter", "deathUI", "playerStartPos")]
 script = ExtResource("1_jarna")
 playerCharacter = NodePath("PlayerCharacter")
@@ -351,6 +361,15 @@ position = Vector2(-48, 260)
 
 [node name="Death UI" parent="Main UI" index="1"]
 visible = false
+
+[node name="foodProgressBar" type="ProgressBar" parent="Main UI"]
+z_index = 1
+offset_right = 400.0
+offset_bottom = 30.0
+theme_override_styles/background = SubResource("StyleBoxFlat_rkja1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sjvmc")
+show_percentage = false
+script = ExtResource("17_m4ocb")
 
 [node name="Berry2" parent="." instance=ExtResource("11_eoa65")]
 position = Vector2(305, 119)
