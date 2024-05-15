@@ -349,7 +349,7 @@ position = Vector2(-48, 260)
 
 [node name="Main UI" parent="." instance=ExtResource("16_jkbiy")]
 
-[node name="Death UI" parent="Main UI" index="1"]
+[node name="Death UI" parent="Main UI" index="2"]
 visible = false
 
 [node name="Berry2" parent="." instance=ExtResource("15_j4a68")]
