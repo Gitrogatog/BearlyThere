@@ -1,19 +1,114 @@
-[gd_scene load_steps=3 format=3 uid="uid://5ix5qd8be2i4"]
+[gd_scene load_steps=12 format=3 uid="uid://cv5af6eyi16mv"]
 
-[ext_resource type="Texture2D" uid="uid://dkrncl2nh4sec" path="res://Art/image.png" id="1_oothk"]
-[ext_resource type="Script" path="res://Scenes/minimap.gd" id="2_33blj"]
+[ext_resource type="PackedScene" uid="uid://cobd8xaf8a36w" path="res://Scenes/newMap.tscn" id="2_gp1yk"]
+[ext_resource type="PackedScene" uid="uid://gt5l51l1jgg8" path="res://Scenes/Cameras/follow_player_cam.tscn" id="3_c2kyd"]
+[ext_resource type="PackedScene" uid="uid://fi21xntiiu7h" path="res://Scenes/rotating_guard.tscn" id="4_h3m1k"]
+[ext_resource type="PackedScene" uid="uid://tnr13st8gpru" path="res://Scenes/patrolling_guard.tscn" id="5_atdlx"]
+[ext_resource type="PackedScene" uid="uid://bpfp6l0ni3woe" path="res://Scenes/player_character.tscn" id="6_8s1ph"]
+[ext_resource type="Script" path="res://Scripts/PlayerCharacter.cs" id="7_etn1y"]
+[ext_resource type="Texture2D" uid="uid://bebc88agbv7qe" path="res://Art/vecteezy_bear-animal-flat-vector-design-isolated_11107891.png" id="8_3lkav"]
+[ext_resource type="PackedScene" uid="uid://10odl8ixbb38" path="res://Scenes/berry.tscn" id="9_84f4e"]
 
-[node name="TextureButton" type="TextureButton"]
-anchors_preset = 1
-anchor_left = 1.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lol5s"]
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4alk8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bby64"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_3lkav")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -287.0
-offset_top = 19.0
-offset_right = 50.0
-offset_bottom = 235.0
-grow_horizontal = 0
-scale = Vector2(0.8, 0.8)
-texture_normal = ExtResource("1_oothk")
-script = ExtResource("2_33blj")
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[connection signal="pressed" from="." to="." method="_on_pressed"]
+[node name="BG" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lol5s")
+metadata/_edit_lock_ = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 1365.0
+offset_bottom = 1385.0
+scale = Vector2(0.1, 0.1)
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(280, 280)
+render_target_update_mode = 4
+
+[node name="World" type="Node2D" parent="SubViewportContainer/SubViewport"]
+
+[node name="TileMap2" parent="SubViewportContainer/SubViewport/World" instance=ExtResource("2_gp1yk")]
+position = Vector2(-163.985, -275.523)
+
+[node name="FollowPlayerCam" parent="SubViewportContainer/SubViewport/World" node_paths=PackedStringArray("playerNode") instance=ExtResource("3_c2kyd")]
+playerNode = NodePath("../PlayerCharacter")
+
+[node name="RotatingGuard" parent="SubViewportContainer/SubViewport/World" instance=ExtResource("4_h3m1k")]
+position = Vector2(-85, -125)
+
+[node name="PatrollingGuard" parent="SubViewportContainer/SubViewport/World" instance=ExtResource("5_atdlx")]
+position = Vector2(-49, 76)
+
+[node name="PlayerCharacter" parent="SubViewportContainer/SubViewport/World" instance=ExtResource("6_8s1ph")]
+position = Vector2(475, -22)
+
+[node name="Player" type="CharacterBody2D" parent="SubViewportContainer/SubViewport/World"]
+visible = false
+position = Vector2(-365, -170)
+script = ExtResource("7_etn1y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/World/Player"]
+shape = SubResource("CapsuleShape2D_4alk8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SubViewportContainer/SubViewport/World/Player"]
+scale = Vector2(0.01, 0.01)
+sprite_frames = SubResource("SpriteFrames_bby64")
+
+[node name="Berry" parent="SubViewportContainer/SubViewport/World" instance=ExtResource("9_84f4e")]
+
+[node name="PlayerStartPos" type="Node2D" parent="SubViewportContainer/SubViewport/World"]
+position = Vector2(384, 178)
+
+[node name="Waypoints" type="Node2D" parent="SubViewportContainer/SubViewport/World"]
+
+[node name="waypoint0" type="Node2D" parent="SubViewportContainer/SubViewport/World/Waypoints"]
+position = Vector2(166, 75)
+
+[node name="waypoint1" type="Node2D" parent="SubViewportContainer/SubViewport/World/Waypoints"]
+position = Vector2(-37, 82)
+
+[node name="waypoint2" type="Node2D" parent="SubViewportContainer/SubViewport/World/Waypoints"]
+position = Vector2(-48, 260)
+
+[node name="Berry2" parent="SubViewportContainer/SubViewport/World" instance=ExtResource("9_84f4e")]
+position = Vector2(305, 119)
+
+[node name="Berry3" parent="SubViewportContainer/SubViewport/World" instance=ExtResource("9_84f4e")]
+position = Vector2(175, -103)
