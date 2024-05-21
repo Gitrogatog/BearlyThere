@@ -6,6 +6,7 @@ public abstract partial class BaseGuardAI : Node2D
     public GuardSightAI guardSightAI;
     public bool guardEnabled = true;
     AnimatedSprite2D spriteNode;
+    protected float currentVelocity = 0;
 
     public void Init()
     {
@@ -43,16 +44,48 @@ public abstract partial class BaseGuardAI : Node2D
     }
 
     abstract public void MoveGuard(float delta);
-    // public void SetAnim(float rotation)
-    // {
-    //     float rot = SnapAngle(rotation);
-    //     if (rot == )
-    //         spriteNode.Play("idle_right");
+    public void SetAnim(Vector2 rotVector)
+    {
 
-    // }
-    // float SnapAngle(float rotationToSnap)
-    // {
-    //     return (float)(Math.PI * 0.25 * Math.Round(rotationToSnap / Math.PI * 0.25f));
+        bool isRunning = currentVelocity > 1f;
+        if (rotVector.X > 0.5f)
+        {
+            SetAnimFrame("right", isRunning);
+        }
+        else if (rotVector.X < -0.5f)
+        {
+            SetAnimFrame("left", isRunning);
+        }
+        else
+        {
+            if (rotVector.Y > 0.5f)
+            {
+                SetAnimFrame("down", isRunning);
+            }
+            else if (rotVector.Y < -0.5f)
+            {
+                SetAnimFrame("up", isRunning);
+            }
+        }
+    }
+    void SetAnimFrame(string animName, bool isRunning)
+    {
+        if (!isRunning)
+        {
+            spriteNode.Play($"{animName}_idle");
+        }
+        else
+        {
+            var current_frame = spriteNode.Frame;
+            var current_progress = spriteNode.FrameProgress;
+            spriteNode.Play($"{animName}_walk");
+            spriteNode.SetFrameAndProgress(current_frame, current_progress);
+        }
 
-    // }
+    }
+    float SnapAngle(float rotationToSnap)
+    {
+        return (float)(Math.PI * 0.25 * Math.Round(rotationToSnap / Math.PI * 0.25f));
+
+    }
 }

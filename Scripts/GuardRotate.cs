@@ -21,6 +21,8 @@ public partial class GuardRotate : BaseGuardAI
         if (guardEnabled)
         {
             MoveGuard((float)delta);
+            Vector2 rotVector = Vector2.FromAngle(rotateNode.GlobalRotation);
+            SetAnim(rotVector);
         }
     }
     public override void OnStartLevel()

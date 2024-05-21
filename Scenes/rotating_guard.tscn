@@ -1,59 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://fi21xntiiu7h"]
+[gd_scene load_steps=4 format=3 uid="uid://fi21xntiiu7h"]
 
 [ext_resource type="Script" path="res://Scripts/GuardRotate.cs" id="1_hwnqh"]
 [ext_resource type="PackedScene" uid="uid://du4ogmtvgwqwo" path="res://Scenes/guard_sight_ai.tscn" id="2_5d8px"]
-[ext_resource type="Texture2D" uid="uid://cc4d6khl3voob" path="res://Art/Modern tiles_Free/Characters_free/Adam_idle_16x16.png" id="3_23xs6"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6xf7q"]
-atlas = ExtResource("3_23xs6")
-region = Rect2(48, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pb56m"]
-atlas = ExtResource("3_23xs6")
-region = Rect2(32, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k47vv"]
-atlas = ExtResource("3_23xs6")
-region = Rect2(0, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i6dtm"]
-atlas = ExtResource("3_23xs6")
-region = Rect2(16, 0, 16, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_oglsp"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6xf7q")
-}],
-"loop": true,
-"name": &"down_idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pb56m")
-}],
-"loop": true,
-"name": &"left_idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k47vv")
-}],
-"loop": true,
-"name": &"right_idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i6dtm")
-}],
-"loop": true,
-"name": &"up_idle",
-"speed": 5.0
-}]
+[ext_resource type="SpriteFrames" uid="uid://bxsohihbujvnx" path="res://Resources/guard_frames.tres" id="3_vkoxg"]
 
 [node name="RotatingGuard" type="Node2D"]
 script = ExtResource("1_hwnqh")
@@ -66,5 +15,5 @@ turnSpeed = 20.0
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_oglsp")
-animation = &"down_idle"
+sprite_frames = ExtResource("3_vkoxg")
+animation = &"up_walk"
