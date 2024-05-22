@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://5fsuq07yac05"]
+[gd_scene load_steps=32 format=3 uid="uid://5fsuq07yac05"]
 
 [ext_resource type="Texture2D" uid="uid://btuxj0nky5eq6" path="res://Art/survivalgame-terrian-cliffs.png" id="1_6m56v"]
 [ext_resource type="Script" path="res://Scripts/StealthGameLoop.cs" id="1_jarna"]
@@ -301,6 +301,9 @@ shadow_offset = Vector2(0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjvmc"]
 bg_color = Color(0.0431373, 0.309804, 0.12549, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o001o"]
+size = Vector2(177, 631)
+
 [node name="World" type="Node2D" node_paths=PackedStringArray("playerCharacter", "deathUI", "playerStartPos")]
 script = ExtResource("1_jarna")
 playerCharacter = NodePath("PlayerCharacter")
@@ -438,6 +441,12 @@ position = Vector2(305, 119)
 [node name="Berry3" parent="." instance=ExtResource("11_eoa65")]
 visible = false
 position = Vector2(175, -103)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-873.5, -397.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_o001o")
 
 [connection signal="pressed" from="Main UI/Death UI/ResetButton" to="." method="ResetLevel"]
 

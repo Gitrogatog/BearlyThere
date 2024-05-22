@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cobd8xaf8a36w"]
+[gd_scene load_steps=29 format=3 uid="uid://cobd8xaf8a36w"]
 
 [ext_resource type="Texture2D" uid="uid://cdde56p815ssp" path="res://Art/cherryzoomed.png" id="1_hwrks"]
 [ext_resource type="Texture2D" uid="uid://23ihwbxt33wg" path="res://Art/SERENE_VILLAGE_REVAMPED/RPG_MAKER_MV/Houses_TILESET_B-C-D-E.png" id="1_stct8"]
@@ -2654,6 +2654,9 @@ sources/0 = SubResource("TileSetAtlasSource_acr77")
 sources/1 = SubResource("TileSetAtlasSource_cfpkm")
 sources/2 = SubResource("TileSetAtlasSource_les3o")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7pak"]
+size = Vector2(177, 631)
+
 [node name="TileMap" type="TileMap"]
 y_sort_enabled = true
 tile_set = SubResource("TileSet_nwj8q")
@@ -2670,3 +2673,7 @@ layer_2/tile_data = PackedInt32Array(-917512, 720899, 13, -851976, 720899, 14, -
 layer_3/name = "fruits"
 layer_3/y_sort_enabled = true
 layer_3/tile_data = PackedInt32Array(-393229, 983043, 21, -327693, 262146, 3, -393228, 1048579, 21, -327692, 262146, 268435459, 393230, 983043, 23, 458766, 983043, 24, 393231, 1048579, 23, 458767, 1048579, 24, 655345, 1114115, 23, 655346, 1114115, 1342177303, 720881, 1114115, 25, -589832, 0, 0, -524295, 0, 0, -524302, 1, 1879048192, -327688, 1, 1610612736, -393217, 1, 1610612736, -393218, 1, 1879048192, -131083, 0, 0, 131077, 0, 0, 131076, 0, 0, -131079, 131074, 2, 131073, 131074, 2, 196610, 262146, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-873.5, -397.5)
+shape = SubResource("RectangleShape2D_b7pak")
