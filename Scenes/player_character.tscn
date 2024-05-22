@@ -11,6 +11,7 @@ radius = 36.0139
 
 [node name="PlayerCharacter" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
+motion_mode = 1
 script = ExtResource("1_0f3r2")
 moveSpeed = 100.0
 metadata/IsPlayer = true

@@ -28,7 +28,7 @@ position = Vector2(83, 40)
 
 [node name="Main UI" parent="." instance=ExtResource("5_4l6jt")]
 
-[node name="Death UI" parent="Main UI" index="1"]
+[node name="Death UI" parent="Main UI" index="2"]
 visible = false
 
 [node name="foodProgressBar" type="ProgressBar" parent="Main UI"]

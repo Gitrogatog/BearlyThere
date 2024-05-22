@@ -25,12 +25,14 @@ public partial class PatrolGuardAI : BaseGuardAI
         targetWaypointIndex = 0;
         GlobalPosition = waypoints[0].GlobalPosition;
         GlobalRotation = 0;
+        currentVelocity = moveSpeed;
     }
     public override void _Process(double delta)
     {
         if (guardEnabled)
         {
             MoveGuard((float)delta);
+            // SetAnim(rotateNode.GlobalRotation);
         }
     }
 
@@ -67,5 +69,7 @@ public partial class PatrolGuardAI : BaseGuardAI
                 targetWaypointIndex = 0;
             }
         }
+        // Vector2 rotVector = Vector2.FromAngle(rotateNode.GlobalRotation);
+        SetAnim(vectorToTarget.Normalized());
     }
 }
