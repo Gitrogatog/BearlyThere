@@ -68,6 +68,8 @@ deathUI = NodePath("Main UI/Death UI")
 playerStartPos = NodePath("PlayerStartPos")
 
 [node name="TileMap" parent="." instance=ExtResource("2_ov25q")]
+position = Vector2(-2, 0)
+layer_3/tile_data = PackedInt32Array(-393229, 983043, 21, -327693, 262146, 3, -393228, 1048579, 21, -327692, 262146, 268435459, 393230, 983043, 23, 458766, 983043, 24, 393231, 1048579, 23, 458767, 1048579, 24, 655345, 1114115, 23, 655346, 1114115, 1342177303, 720881, 1114115, 25, -589832, 0, 0, -524295, 0, 0, -524302, 1, 1879048192, -327688, 1, 1610612736, -393217, 1, 1610612736, -393218, 1, 1879048192, -131083, 0, 0, -131079, 131074, 2, 262163, 1179651, 33, 327699, 1179651, 34, 262157, 1048579, 805306401, 196621, 1048579, 805306402, 262158, 1048579, 805306401, 196622, 1048579, 805306402, 262159, 1048579, 805306401, 196623, 1048579, 805306402, 262160, 1048579, 805306401, 196624, 1048579, 805306402, 131087, 1048579, 805306401, 65551, 1048579, 805306402, 131086, 1048579, 805306401, 65550, 1048579, 805306402, 393235, 1048579, 268435489, 458771, 1048579, 268435490, 524307, 1048579, 268435489, 589843, 1048579, 268435490, 196628, 1048579, 268435489, 262164, 1048579, 268435490, 327700, 1048579, 268435489, 393236, 1048579, 268435490, 458772, 1048579, 268435489, 524308, 1048579, 268435490, 589844, 1048579, 268435489, 655380, 1048579, 268435490, -655341, 1048579, 268435489, -589805, 1048579, 268435490, -524269, 1048579, 268435489, -458733, 1048579, 268435490, -393197, 1048579, 268435489, -327661, 1048579, 268435490, -196589, 1048579, 268435489, -131053, 1048579, 268435490, -65517, 1048579, 268435489, 19, 1048579, 268435490)
 
 [node name="FollowPlayerCam" parent="." node_paths=PackedStringArray("playerNode") instance=ExtResource("7_0id2l")]
 playerNode = NodePath("../PlayerCharacter")
@@ -81,6 +83,7 @@ minAngle = -90.0
 maxAngle = 0.0
 
 [node name="PatrollingGuard" parent="." node_paths=PackedStringArray("waypoints") instance=ExtResource("10_lihx7")]
+visible = false
 position = Vector2(-49, 76)
 waypoints = [NodePath("../Waypoints/waypoint0"), NodePath("../Waypoints/waypoint1"), NodePath("../Waypoints/waypoint2"), NodePath("../Waypoints/waypoint1")]
 
@@ -94,6 +97,7 @@ waypoints = [NodePath("../Waypoints/waypoint5"), NodePath("../Waypoints/waypoint
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("7_mfufj")]
 position = Vector2(475, -22)
+scale = Vector2(-1, 1)
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(-365, -170)
@@ -107,7 +111,12 @@ scale = Vector2(0.01, 0.01)
 sprite_frames = SubResource("SpriteFrames_bby64")
 
 [node name="Berry" parent="." instance=ExtResource("11_eoa65")]
-visible = false
+position = Vector2(225, 105)
+
+[node name="AnimatedSprite2D" parent="Berry" index="0"]
+animation = &"white_outlined_berries"
+frame = 1
+speed_scale = 0.0
 
 [node name="PlayerStartPos" type="Node2D" parent="."]
 position = Vector2(777, 125)
@@ -142,6 +151,7 @@ position = Vector2(-240, -337)
 position = Vector2(-238, -32)
 
 [node name="Main UI" parent="." instance=ExtResource("13_5qkkd")]
+visible = false
 
 [node name="Food Meter" parent="Main UI" index="0"]
 metadata/_edit_use_anchors_ = true
@@ -191,12 +201,14 @@ script = ExtResource("17_m4ocb")
 metadata/_edit_use_anchors_ = true
 
 [node name="Berry2" parent="." instance=ExtResource("11_eoa65")]
-visible = false
-position = Vector2(305, 119)
+position = Vector2(121, 164)
+
+[node name="AnimatedSprite2D" parent="Berry2" index="0"]
+animation = &"white_outlined_berries"
+speed_scale = 0.0
 
 [node name="Berry3" parent="." instance=ExtResource("11_eoa65")]
-visible = false
-position = Vector2(175, -103)
+position = Vector2(-214, -250)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-873.5, -397.5)
@@ -239,4 +251,6 @@ shape = SubResource("RectangleShape2D_c3rce")
 
 [connection signal="pressed" from="Main UI/Death UI/ResetButton" to="." method="ResetLevel"]
 
+[editable path="Berry"]
 [editable path="Main UI"]
+[editable path="Berry2"]

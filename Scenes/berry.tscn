@@ -94,8 +94,9 @@ texture_filter = 1
 script = ExtResource("1_3x6wx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_aqaeb")
-animation = &"eaten_uneaten_trees"
+animation = &"grape"
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(3, 3)

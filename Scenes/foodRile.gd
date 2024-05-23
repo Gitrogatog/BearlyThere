@@ -21,9 +21,11 @@ func on_reset():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if state == "uneaten":
-		$AnimatedSprite2D.play("uneaten")
+		visible = true
+		#$AnimatedSprite2D.play("uneaten")
 	if state == "ate":
-		$AnimatedSprite2D.play("ate")
+		visible = false
+		#$AnimatedSprite2D.play("ate")
 
 
 func on_collision(body: Node2D):
