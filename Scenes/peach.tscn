@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://dl2qkqp64k7fk"]
+
+[ext_resource type="Script" path="res://Scenes/foodRile.gd" id="1_6ggy0"]
+[ext_resource type="Texture2D" uid="uid://d38dgxry53mqg" path="res://Art/output.png" id="2_s7k12"]
+[ext_resource type="Texture2D" uid="uid://5ow5ioavbg5t" path="res://Art/output-onlinepngtools.png" id="4_fw0cp"]
+[ext_resource type="Texture2D" uid="uid://ddh3if71h430c" path="res://Art/grapes zoomed.png" id="5_wyyg6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17e6l"]
+atlas = ExtResource("4_fw0cp")
+region = Rect2(183, 144, 61, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aqaeb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s7k12")
+}],
+"loop": true,
+"name": &"ate",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_wyyg6")
+}],
+"loop": true,
+"name": &"grape",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17e6l")
+}],
+"loop": true,
+"name": &"uneaten",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_apiqr"]
+
+[node name="Berry" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_6ggy0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_aqaeb")
+animation = &"uneaten"
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(3, 3)
+collision_layer = 35
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+light_mask = 0
+visibility_layer = 0
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_apiqr")
+
+[connection signal="body_entered" from="Area2D" to="." method="on_collision"]

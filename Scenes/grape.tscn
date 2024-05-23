@@ -1,18 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://10odl8ixbb38"]
+[gd_scene load_steps=6 format=3 uid="uid://dq0fr357qpic0"]
 
-[ext_resource type="Script" path="res://Scenes/foodRile.gd" id="1_3x6wx"]
-[ext_resource type="Texture2D" uid="uid://cdde56p815ssp" path="res://Art/cherryzoomed.png" id="3_j76e3"]
+[ext_resource type="Script" path="res://Scenes/foodRile.gd" id="1_n5ewv"]
+[ext_resource type="Texture2D" uid="uid://d38dgxry53mqg" path="res://Art/output.png" id="2_vfdun"]
+[ext_resource type="Texture2D" uid="uid://ddh3if71h430c" path="res://Art/grapes zoomed.png" id="3_min00"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aqaeb"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vfdun")
+}],
 "loop": true,
 "name": &"ate",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_j76e3")
+"texture": ExtResource("3_min00")
 }],
 "loop": true,
 "name": &"uneaten",
@@ -23,7 +27,7 @@ animations = [{
 
 [node name="Berry" type="Node2D"]
 texture_filter = 1
-script = ExtResource("1_3x6wx")
+script = ExtResource("1_n5ewv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_aqaeb")

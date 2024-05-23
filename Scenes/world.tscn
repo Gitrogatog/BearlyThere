@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://5fsuq07yac05"]
+[gd_scene load_steps=27 format=3 uid="uid://5fsuq07yac05"]
 
 [ext_resource type="Script" path="res://Scripts/StealthGameLoop.cs" id="1_jarna"]
 [ext_resource type="PackedScene" uid="uid://cobd8xaf8a36w" path="res://Scenes/newMap.tscn" id="2_ov25q"]
@@ -7,8 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://bpfp6l0ni3woe" path="res://Scenes/player_character.tscn" id="7_mfufj"]
 [ext_resource type="Texture2D" uid="uid://bebc88agbv7qe" path="res://Art/vecteezy_bear-animal-flat-vector-design-isolated_11107891.png" id="8_sjmd1"]
 [ext_resource type="PackedScene" uid="uid://fi21xntiiu7h" path="res://Scenes/rotating_guard.tscn" id="9_66yq7"]
+[ext_resource type="PackedScene" uid="uid://dl2qkqp64k7fk" path="res://Scenes/peach.tscn" id="9_h30rl"]
 [ext_resource type="PackedScene" uid="uid://tnr13st8gpru" path="res://Scenes/patrolling_guard.tscn" id="10_lihx7"]
-[ext_resource type="PackedScene" uid="uid://10odl8ixbb38" path="res://Scenes/berry.tscn" id="11_eoa65"]
+[ext_resource type="PackedScene" uid="uid://dq0fr357qpic0" path="res://Scenes/grape.tscn" id="11_fjf3p"]
+[ext_resource type="PackedScene" uid="uid://dwqatdg7pwwll" path="res://Scenes/cherries.tscn" id="12_nloee"]
 [ext_resource type="PackedScene" uid="uid://k5lkqeqrm63w" path="res://Scenes/main_ui.tscn" id="13_5qkkd"]
 [ext_resource type="Script" path="res://Scripts/ProgressBar.gd" id="17_m4ocb"]
 
@@ -68,6 +70,7 @@ deathUI = NodePath("Main UI/Death UI")
 playerStartPos = NodePath("PlayerStartPos")
 
 [node name="TileMap" parent="." instance=ExtResource("2_ov25q")]
+layer_3/tile_data = PackedInt32Array(-393229, 983043, 21, -393228, 1048579, 21, 262163, 1179651, 33, 327699, 1179651, 34, 262157, 1048579, 805306401, 196621, 1048579, 805306402, 262158, 1048579, 805306401, 196622, 1048579, 805306402, 262159, 1048579, 805306401, 196623, 1048579, 805306402, 262160, 1048579, 805306401, 196624, 1048579, 805306402, 131087, 1048579, 805306401, 65551, 1048579, 805306402, 131086, 1048579, 805306401, 65550, 1048579, 805306402, 393235, 1048579, 268435489, 458771, 1048579, 268435490, 524307, 1048579, 268435489, 589843, 1048579, 268435490, 196628, 1048579, 268435489, 262164, 1048579, 268435490, 327700, 1048579, 268435489, 393236, 1048579, 268435490, 458772, 1048579, 268435489, 524308, 1048579, 268435490, 589844, 1048579, 268435489, 655380, 1048579, 268435490, -655341, 1048579, 268435489, -589805, 1048579, 268435490, -524269, 1048579, 268435489, -458733, 1048579, 268435490, -393197, 1048579, 268435489, -327661, 1048579, 268435490, -196589, 1048579, 268435489, -131053, 1048579, 268435490, -65517, 1048579, 268435489, 19, 1048579, 268435490)
 
 [node name="FollowPlayerCam" parent="." node_paths=PackedStringArray("playerNode") instance=ExtResource("7_0id2l")]
 playerNode = NodePath("../PlayerCharacter")
@@ -106,9 +109,6 @@ shape = SubResource("CapsuleShape2D_4alk8")
 scale = Vector2(0.01, 0.01)
 sprite_frames = SubResource("SpriteFrames_bby64")
 
-[node name="Berry" parent="." instance=ExtResource("11_eoa65")]
-visible = false
-
 [node name="PlayerStartPos" type="Node2D" parent="."]
 position = Vector2(777, 125)
 
@@ -141,6 +141,21 @@ position = Vector2(-240, -337)
 [node name="waypoint8" type="Node2D" parent="Waypoints"]
 position = Vector2(-238, -32)
 
+[node name="Berry3" parent="." instance=ExtResource("9_h30rl")]
+position = Vector2(-277, -123)
+
+[node name="Berry" parent="." instance=ExtResource("9_h30rl")]
+position = Vector2(-630, -425)
+
+[node name="Berry2" parent="." instance=ExtResource("12_nloee")]
+position = Vector2(-525, -124)
+
+[node name="Berry4" parent="." instance=ExtResource("12_nloee")]
+position = Vector2(-368, -269)
+
+[node name="Berry5" parent="." instance=ExtResource("11_fjf3p")]
+position = Vector2(160, 168)
+
 [node name="Main UI" parent="." instance=ExtResource("13_5qkkd")]
 
 [node name="Food Meter" parent="Main UI" index="0"]
@@ -164,22 +179,6 @@ metadata/_edit_use_anchors_ = true
 [node name="Death UI" parent="Main UI" index="2"]
 visible = false
 
-[node name="Minimap" type="SubViewportContainer" parent="Main UI"]
-visible = false
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -100.0
-offset_bottom = 100.0
-grow_horizontal = 0
-
-[node name="SubViewport" type="SubViewport" parent="Main UI/Minimap"]
-handle_input_locally = false
-size = Vector2i(100, 100)
-render_target_update_mode = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Main UI/Minimap/SubViewport"]
-
 [node name="foodProgressBar" type="ProgressBar" parent="Main UI"]
 z_index = 1
 offset_right = 400.0
@@ -189,14 +188,6 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_sjvmc")
 show_percentage = false
 script = ExtResource("17_m4ocb")
 metadata/_edit_use_anchors_ = true
-
-[node name="Berry2" parent="." instance=ExtResource("11_eoa65")]
-visible = false
-position = Vector2(305, 119)
-
-[node name="Berry3" parent="." instance=ExtResource("11_eoa65")]
-visible = false
-position = Vector2(175, -103)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-873.5, -397.5)
@@ -236,6 +227,12 @@ shape = SubResource("RectangleShape2D_12ybo")
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1793.13, 740.625)
 shape = SubResource("RectangleShape2D_c3rce")
+
+[node name="Berry6" parent="." instance=ExtResource("11_fjf3p")]
+position = Vector2(-685, 493)
+
+[node name="Berry7" parent="." instance=ExtResource("11_fjf3p")]
+position = Vector2(724, 308)
 
 [connection signal="pressed" from="Main UI/Death UI/ResetButton" to="." method="ResetLevel"]
 
