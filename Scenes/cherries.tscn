@@ -1,0 +1,108 @@
+[gd_scene load_steps=12 format=3 uid="uid://dwqatdg7pwwll"]
+
+[ext_resource type="Script" path="res://Scenes/foodRile.gd" id="1_sqtwk"]
+[ext_resource type="Texture2D" uid="uid://d38dgxry53mqg" path="res://Art/output.png" id="2_a4lw7"]
+[ext_resource type="Texture2D" uid="uid://cdde56p815ssp" path="res://Art/cherryzoomed.png" id="3_aink4"]
+[ext_resource type="Texture2D" uid="uid://5ow5ioavbg5t" path="res://Art/output-onlinepngtools.png" id="4_ikw8a"]
+[ext_resource type="Texture2D" uid="uid://ddh3if71h430c" path="res://Art/grapes zoomed.png" id="5_my5iq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rq2cm"]
+atlas = ExtResource("4_ikw8a")
+region = Rect2(144, 0, 89, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvu86"]
+atlas = ExtResource("4_ikw8a")
+region = Rect2(55, 0, 83, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17e6l"]
+atlas = ExtResource("4_ikw8a")
+region = Rect2(183, 144, 61, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sqvf"]
+atlas = ExtResource("4_ikw8a")
+region = Rect2(87, 96, 57, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aqaeb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a4lw7")
+}],
+"loop": true,
+"name": &"ate",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_aink4")
+}],
+"loop": true,
+"name": &"cherry",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"eaten",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rq2cm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvu86")
+}],
+"loop": true,
+"name": &"eaten_uneaten_trees",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_my5iq")
+}],
+"loop": true,
+"name": &"grape",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_aink4")
+}],
+"loop": true,
+"name": &"uneaten",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17e6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sqvf")
+}],
+"loop": true,
+"name": &"white_outlined_berries",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_apiqr"]
+
+[node name="Berry" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_sqtwk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_aqaeb")
+animation = &"uneaten"
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(3, 3)
+collision_layer = 35
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+light_mask = 0
+visibility_layer = 0
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_apiqr")
+
+[connection signal="body_entered" from="Area2D" to="." method="on_collision"]
